@@ -4,11 +4,11 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.decorators.http import require_http_methods
-import dialogflow
+import dialogflow_v2 as dialogflow
+from dialogflow_v2.types import TextInput, QueryInput
 import os
 import json
 from django.views.decorators.csrf import csrf_exempt
-#from dialogflow_v2 import dialogflow_v2 as Dialogflow
 # Create your views here.
 
 @require_http_methods(['GET'])
@@ -32,12 +32,12 @@ def chat_view(request):
     input_dict = convert(request.body)
     input_text = json.loads(input_dict)['text']
 
-    GOOGLE_AUTHENTICATION_FILE_NAME = "AppointmentScheduler.json"
+    GOOGLE_AUTHENTICATION_FILE_NAME = "titanium-deck-312709-52d90c893a3e.json"
     current_directory = os.path.dirname(os.path.realpath(__file__))
     path = os.path.join(current_directory, GOOGLE_AUTHENTICATION_FILE_NAME)
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = path
 
-    GOOGLE_PROJECT_ID = "<YOUR_PROJECT_ID>"
+    GOOGLE_PROJECT_ID = "titanium-deck-312709"
     session_id = "1234567891"
     context_short_name = "does_not_matter"
 
@@ -45,7 +45,6 @@ def chat_view(request):
                context_short_name.lower()
 
     parameters = dialogflow.types.struct_pb2.Struct()
-    #parameters["foo"] = "bar"
 
     context_1 = dialogflow.types.context_pb2.Context(
         name=context_name,
@@ -67,7 +66,6 @@ def chat_view(request):
 
 def detect_intent_with_parameters(project_id, session_id, query_params, language_code, user_input):
     """Returns the result of detect intent with texts as inputs.
-
     Using the same `session_id` between requests allows continuation
     of the conversaion."""
     session_client = dialogflow.SessionsClient()
@@ -75,13 +73,10 @@ def detect_intent_with_parameters(project_id, session_id, query_params, language
     session = session_client.session_path(project_id, session_id)
     print('Session path: {}\n'.format(session))
 
-    #text = "this is as test"
     text = user_input
 
-    text_input = dialogflow.types.TextInput(
-        text=text, language_code=language_code)
-
-    query_input = dialogflow.types.QueryInput(text=text_input)
+    text_input = TextInput(text=text, language_code=language_code)
+    query_input = QueryInput(text=text_input)
 
     response = session_client.detect_intent(
         session=session, query_input=query_input,

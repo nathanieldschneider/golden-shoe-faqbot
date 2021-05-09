@@ -1,0 +1,14 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+dialogflow = "==0.5.1"
+Django = "==2.1.5"
+PyMySQL = "==0.9.3"
+
+[dev-packages]
+
+[requires]
+python_version = "3.9"

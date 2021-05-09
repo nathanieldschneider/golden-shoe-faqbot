@@ -16,7 +16,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-# Quick-start development settings - unsuitable for production
+# development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -71,13 +71,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-
-# Install PyMySQL as mysqlclient/MySQLdb to use Django's mysqlclient adapter
-# See https://docs.djangoproject.com/en/2.1/ref/databases/#mysql-db-api-drivers
-# for more information
 import pymysql  # noqa: 402
 pymysql.install_as_MySQLdb()
 
@@ -88,10 +81,10 @@ if os.getenv('GAE_APPLICATION', None):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'HOST': '/cloudsql/[PROJECT_NAME]:[REGION_NAME]:[INSTANCE_NAME]',
-            'USER': '[YOUR-USERNAME]',
-            'PASSWORD': '[YOUR-PASSWORD]',
-            'NAME': '[YOUR-DATABASE]',
+            'HOST': '/cloudsql/titanium-deck-312709:europe-west2:polls-instance',
+            'USER': 'goldenshoeTest',
+            'PASSWORD': 'password',
+            'NAME': 'polls',
         }
     }
 else:
@@ -106,9 +99,9 @@ else:
             'ENGINE': 'django.db.backends.mysql',
             'HOST': '127.0.0.1',
             'PORT': '3306',
-            'NAME': '[YOUR-DATABASE]',
-            'USER': '[YOUR-USERNAME]',
-            'PASSWORD': '[YOUR-PASSWORD]'
+            'NAME': 'polls',
+            'USER': 'goldenshoeTest',
+            'PASSWORD': 'password'
         }
     }
 # [END db_setup]
@@ -131,6 +124,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',  # noqa: 501
     },
 ]
+
+SECRET_KEY = '&!e#lroul#7-ddcjxmfp82(ena2a3+5&n8#oxb7t9y1tzslku2'
 
 
 # Internationalization
@@ -161,3 +156,4 @@ CORS_ORIGIN_WHITELIST = (
     'localhost:8000',
     '127.0.0.1:9000'
 )
+
