@@ -2,7 +2,7 @@
 
 ## Accessible here: https://titanium-deck-312709.nw.r.appspot.com/chat/
 
-It utilises Google's dialogflow API to bring an easy to edit, dynamic chatbot for FAQ/customer service purposes.
+It utilises Google's dialogflow API to bring an easy to edit, dynamic chatbot for FAQ/customer service purposes. Most of it was built off of the foundation provided by Google - since, why reinvent the wheel?
 
 The API is integrated to a Django frontend, with a GCP database in the backend - the whole thing is driven by GCP App Engine.
 
@@ -31,3 +31,7 @@ can i return an item/how do i return an item/returns/how do i make a return
 
 ### Question:
 who is the worlds greatest graduate developer
+
+## For the Future
+
+As stated, it's supremely scalable and super easy to edit and add new queries and interactions via the GCP. It also fits very snuggly into Django, and I haven't investigated thoroughly but I'm pretty confident it can be smooshed into a chat window via the messenger API from facebook, or from scratch with the help of Vue.JS/ other frontend frameworks.
