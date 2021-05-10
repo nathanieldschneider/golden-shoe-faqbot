@@ -1,5 +1,7 @@
 # This is a very rudimentary FAQ-bot for Golden Shoe.
 
+## Accessible here: https://titanium-deck-312709.nw.r.appspot.com/chat/
+
 It utilises Google's dialogflow API to bring an easy to edit, dynamic chatbot for FAQ/customer service purposes.
 
 The API is integrated to a Django frontend, with a GCP database in the backend - the whole thing is driven by GCP App Engine.
