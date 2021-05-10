@@ -2,7 +2,7 @@
 
 ## Accessible here: https://titanium-deck-312709.nw.r.appspot.com/chat/
 
-It utilises Google's dialogflow API to bring an easy to edit, dynamic chatbot for FAQ/customer service purposes. Most of it was built off of the foundation provided by Google - since, why reinvent the wheel?
+It utilises Google's dialogflow API to bring an easy to edit, dynamic chatbot for FAQ/customer service purposes. **Most of it was built off of the foundation provided by Google - since, why reinvent the wheel?**
 
 The API is integrated to a Django frontend, with a GCP database in the backend - the whole thing is driven by GCP App Engine.
 
